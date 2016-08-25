@@ -1,6 +1,6 @@
 var angle = 0;
 var angleTrig = 0;
-var speed = 0.05 / 360 * Math.PI * 2  / 20;
+var speed = 0.05 / 360 * Math.PI * 2  / 10;
 var s = 4;
 var currentScale = 0.5;
 var looping = true;
@@ -33,14 +33,15 @@ function draw() {
     // n = map(abs(sin(frameCount / 10)), 0, 1, 0, 5);
     var x = 0;
     var y = 0;
-    for (var j = 0; j < 1000; j++) {
+    for (var j = 0; j < 3000; j++) {
         var t = angleTrig + angleTrig * j;
         ellipse(x, y, s, s);
         // x += cos(t) * cos(t * 2) * cos(t * 2) * sin(t * m) * (hyp + (j / 50));
         // y += sin(t) * cos(t * 2) * cos(t * 2) * sin(t * m) * (hyp + (j / 50));
 
-        x += cos(t) * cos(t * 2) * cos(t * 2) * sin(t * 4) * (hyp + (j / 50));
-        y += sin(t) * cos(t * 2) * cos(t * 2) * sin(t * 4) * (hyp + (j / 50));
+        x += cos(t) * pow(cos(t * 2.5), 40) / sin(cos(t * 2.5), 40) * (hyp + (j / 50));
+        y += sin(t) * pow(cos(t * 2.5), 40) / sin(cos(t * 2.5), 40) * (hyp + (j / 50));
+
     }
     angleTrig -= speed;
     // stroke(255);
